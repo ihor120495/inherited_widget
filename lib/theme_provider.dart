@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ThemeNotifier extends InheritedWidget{
+class ThemeProvider extends InheritedWidget {
   final ThemeData themeData;
   final Function toggleTheme;
 
-  ThemeNotifier ({
-    Key? key,
+  const ThemeProvider({
+    super.key,
     required this.themeData,
     required this.toggleTheme,
-    required Widget child,
+    required super.child,
 
-}) : super (key : key, child : child);
+  });
 
   @override
-  bool updateShouldNotify(ThemeNotifier oldWidget) {
-
+  bool updateShouldNotify(ThemeProvider oldWidget) {
     return themeData != oldWidget.themeData;
   }
-  static ThemeNotifier? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ThemeNotifier>();
 
+  static ThemeProvider? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ThemeProvider>();
   }
-
-
-
-
 
 
 }

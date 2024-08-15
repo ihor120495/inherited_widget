@@ -1,65 +1,48 @@
 import 'package:flutter/material.dart';
 import 'theme_provider.dart';
+import 'themed_widget.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
-
-
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool isDarkTheme = false;
 
-  void _toggleTheme() {
-    setState(() {
-      isDarkTheme = !isDarkTheme;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    final themeData = isDarkTheme ? ThemeData.dark() : ThemeData.light();
-    return ThemeNotifier(
-        themeData: themeData,
-        toggleTheme: _toggleTheme,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Home Screen'),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Current Theme ${isDarkTheme ? 'Dark' : 'Light'}',
+    final themeNotifier = ThemeProvider.of(context);
 
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(onPressed: () {
-                  _toggleTheme();
-                },
-                  child: Text('Toggle Theme'),
-                ),
-                SizedBox(
-                  height: 20,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
 
-                )
-
-              ],
+            const SizedBox(
+              height: 20,
             ),
-
-          ),
-
-
-        )
-
-
+            ElevatedButton(
+              onPressed: () {
+                themeNotifier?.toggleTheme();
+              },
+              child: const Text('Toggle Theme'),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const ThemedWidget(),
+          ],
+        ),
+      ),
     );
   }
-
-
 }

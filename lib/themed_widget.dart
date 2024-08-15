@@ -6,7 +6,7 @@ class ThemedWidget extends StatelessWidget{
 
   @override
   Widget build (BuildContext context) {
-    final themeNotifier = ThemeNotifier.of(context);
+    final themeNotifier = ThemeProvider.of(context);
 
     return Container(
       padding: const EdgeInsets.all(16),
