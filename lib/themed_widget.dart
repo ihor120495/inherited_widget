@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'theme_provider.dart';
 
-class ThemedWidget extends StatelessWidget{
+class ThemedWidget extends StatelessWidget {
   const ThemedWidget({super.key});
 
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     final themeNotifier = ThemeProvider.of(context);
 
     return Container(
@@ -14,16 +14,7 @@ class ThemedWidget extends StatelessWidget{
       child: Text(
         'Я є themed widget!',
         style: themeNotifier?.themeData.textTheme.headlineMedium,
-
       ),
-
     );
-
-
-
   }
-
-
-
-
 }

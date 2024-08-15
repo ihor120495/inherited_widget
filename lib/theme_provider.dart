@@ -9,7 +9,6 @@ class ThemeProvider extends InheritedWidget {
     required this.themeData,
     required this.toggleTheme,
     required super.child,
-
   });
 
   @override
@@ -20,6 +19,4 @@ class ThemeProvider extends InheritedWidget {
   static ThemeProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<ThemeProvider>();
   }
-
-
 }
